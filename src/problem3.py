@@ -171,7 +171,6 @@ class Cloud(object):
         # ---------------------------------------------------------------------
         return self.hwat - self.water
 
-
     def merge_cloud(self, another_cloud):
         """
         What comes in:
