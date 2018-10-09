@@ -790,9 +790,17 @@ def problem1d(strings):
       :rtype: str | -1
     """
     # -------------------------------------------------------------------------
-    # TODO: 5. Implement and test this function.
+    # Done: 5. Implement and test this function.
     #          Tests have been written for you (above).
     # -------------------------------------------------------------------------
+    a = False
+    for k in range(len(strings)):
+        q = strings[k]
+        w = len(q)
+        a = is_prime(w)
+        if a is True:
+            return q
+    return -1
 
 
 ###############################################################################
