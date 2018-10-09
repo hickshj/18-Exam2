@@ -109,7 +109,7 @@ def main():
     print('Un-comment the calls in MAIN one by one')
     print(' to run the testing code as you complete the TODOs.')
 
-    # run_test_problem2a()
+    run_test_problem2a()
     # run_test_problem2b()
 
 
@@ -196,9 +196,11 @@ def problem2a(triangle):
       :rtype: Triangle
     """
     # -------------------------------------------------------------------------
-    # TODO: 2. Implement and test this function.
+    # Done: 2. Implement and test this function.
     #          Tests have been written for you (above).
     # -------------------------------------------------------------------------
+    newtriangle = Triangle(triangle.a * 2, triangle.b * 2, triangle.c * 2)
+    return newtriangle
 
 
 def run_test_problem2b():
