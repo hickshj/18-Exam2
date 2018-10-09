@@ -28,7 +28,7 @@ def main():
     run_test_init()
     run_test_rain()
     run_test_get_total_rain_amount()
-    # run_test_merge_cloud()
+    run_test_merge_cloud()
 
 
 ###############################################################################
@@ -78,6 +78,7 @@ class Cloud(object):
         # ---------------------------------------------------------------------
         # Done: 2. Implement and test this method.
         # ---------------------------------------------------------------------
+        self.hcap = capacity
         self.hwat = water
         self.capacity = capacity
         if water > self.capacity:
@@ -200,8 +201,13 @@ class Cloud(object):
             #   cloud4.water      is 10
         """
         # ---------------------------------------------------------------------
-        # TODO: 5. Implement and test this method.
+        # Done: 5. Implement and test this method.
         # ---------------------------------------------------------------------
+        self.water = self.water + another_cloud.water
+        self.capacity = self.capacity + another_cloud.capacity
+        another_cloud.water = 0
+        another_cloud.capacity = 0
+        return Cloud(self.capacity, self.water)
 
 
 ###############################################################################
@@ -403,9 +409,9 @@ def run_test_values_of_instance_variables(cloud, expected_capacity, expected_wat
 def something_unexpected_happened_in_our_testing_code():
     print_failure_message()
     explanation = (
-        '  Something unexpected has happened in the testing \n' +
-        '  code that we supplied.  You should probably\n' +
-        '  SEEK HELP FROM YOUR INSTRUCTOR NOW.')
+            '  Something unexpected has happened in the testing \n' +
+            '  code that we supplied.  You should probably\n' +
+            '  SEEK HELP FROM YOUR INSTRUCTOR NOW.')
     print_failure_message(explanation)
 
 
@@ -436,15 +442,15 @@ def run_test_types_of_instance_variables(cloud):
     if ('capacity' not in attributes
             and 'water' not in attributes):
         explanation = (
-            '  This object:\n' +
-            '     ' + str(cloud) + '\n' +
-            '  should have these instance variables:\n' +
-            '     capacity\n' +
-            '     water\n' +
-            '  but it has NONE of them.\n' +
-            '  Perhaps you simply have not yet\n' +
-            '  implemented the   __init__   method?\n' +
-            '  (If so, implement it now.)')
+                '  This object:\n' +
+                '     ' + str(cloud) + '\n' +
+                '  should have these instance variables:\n' +
+                '     capacity\n' +
+                '     water\n' +
+                '  but it has NONE of them.\n' +
+                '  Perhaps you simply have not yet\n' +
+                '  implemented the   __init__   method?\n' +
+                '  (If so, implement it now.)')
         print_failure_message()
         print_failure_message(explanation)
         return False
@@ -454,51 +460,51 @@ def run_test_types_of_instance_variables(cloud):
     if not ('capacity' in attributes
             and 'water' in attributes):
         explanation = (
-            '  This object:\n' +
-            '     ' + str(cloud) + '\n' +
-            '  should have these instance variables:\n' +
-            '     capacity\n' +
-            '     water\n' +
-            '  but it is missing some of them.\n' +
-            '  Perhaps you misspelled something\n' +
-            '  in your   __init__   code?')
+                '  This object:\n' +
+                '     ' + str(cloud) + '\n' +
+                '  should have these instance variables:\n' +
+                '     capacity\n' +
+                '     water\n' +
+                '  but it is missing some of them.\n' +
+                '  Perhaps you misspelled something\n' +
+                '  in your   __init__   code?')
         print_failure_message()
         print_failure_message(explanation)
         return False
 
     # Check that the instance variables are of the right types:
-#     if not isinstance(cloud.capacity, str):
-#         explanation = (
-#             '  This object:\n' +
-#             '     ' + str(cloud) + '\n' +
-#             '  has an instance variable  capacity  with this value:\n' +
-#             '     capacity: ' + str(cloud.capacity) +
-#             '  That value should be a STRING, but is isn\'t.\n')
-#         print_failure_message()
-#         print_failure_message(explanation)
-#         return False
-#
-#     if not isinstance(cloud.water, list):
-#         explanation = (
-#             '  This object:\n' +
-#             '     ' + str(cloud) + '\n' +
-#             '  has an instance variable  water  with this value:\n' +
-#             '     water: ' + str(cloud.water) +
-#             '  That value should be a LIST, but is isn\'t.\n')
-#         print_failure_message()
-#         print_failure_message(explanation)
-#         return False
-#
-#     if not is_list_of_strings(cloud.water):
-#         explanation = (
-#             '  This object:\n' +
-#             '     ' + str(cloud) + '\n' +
-#             '  has an instance variable  water  with this value:\n' +
-#             '     water: ' + str(cloud.water) +
-#             '  That value should be a list of STRINGS, but is isn\'t.\n')
-#         print_failure_message()
-#         print_failure_message(explanation)
-#         return False
+    #     if not isinstance(cloud.capacity, str):
+    #         explanation = (
+    #             '  This object:\n' +
+    #             '     ' + str(cloud) + '\n' +
+    #             '  has an instance variable  capacity  with this value:\n' +
+    #             '     capacity: ' + str(cloud.capacity) +
+    #             '  That value should be a STRING, but is isn\'t.\n')
+    #         print_failure_message()
+    #         print_failure_message(explanation)
+    #         return False
+    #
+    #     if not isinstance(cloud.water, list):
+    #         explanation = (
+    #             '  This object:\n' +
+    #             '     ' + str(cloud) + '\n' +
+    #             '  has an instance variable  water  with this value:\n' +
+    #             '     water: ' + str(cloud.water) +
+    #             '  That value should be a LIST, but is isn\'t.\n')
+    #         print_failure_message()
+    #         print_failure_message(explanation)
+    #         return False
+    #
+    #     if not is_list_of_strings(cloud.water):
+    #         explanation = (
+    #             '  This object:\n' +
+    #             '     ' + str(cloud) + '\n' +
+    #             '  has an instance variable  water  with this value:\n' +
+    #             '     water: ' + str(cloud.water) +
+    #             '  That value should be a list of STRINGS, but is isn\'t.\n')
+    #         print_failure_message()
+    #         print_failure_message(explanation)
+    #         return False
 
     return True
 
@@ -518,10 +524,10 @@ def print_result_of_test(expected, actual):
 
     if isinstance(expected, list) or isinstance(expected, tuple):
         explanation = (
-            '  For at least one of the above, its Expected value\n' +
-            '  does not equal its Actual value.')
-#          Note: the printed\n' +
-#             '  values are the actual values ROUNDED to 1 decimal place.')
+                '  For at least one of the above, its Expected value\n' +
+                '  does not equal its Actual value.')
+        #          Note: the printed\n' +
+        #             '  values are the actual values ROUNDED to 1 decimal place.')
         print_failure_message(explanation)
 
     return False
